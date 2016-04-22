@@ -15,6 +15,11 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 import apiusr.views
+from CarTypes.models import CarTypes
+from City.models import City
+from Country.models import Country
+from Customer.models import Customer
+from Orders.models import Orders
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include, url
@@ -23,6 +28,12 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'accounts', apiusr.views.UserView, 'list')
+router.register(r'car_types', CarTypes.views.CarTypesViewSet, 'list')
+router.register(r'cities', City.views.CarTypesViewSet, 'list')
+router.register(r'countries', Country.views.CarTypesViewSet, 'list')
+router.register(r'customer', Customer.views.CustomerViewSet)
+router.register(r'orders', Orders.views.CustomerViewSet)
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
