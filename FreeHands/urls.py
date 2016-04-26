@@ -25,15 +25,19 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
+from CarTypes.views import CarTypesViewSet
+from City.views import CityViewSet
+from Country.views import CountryViewSet
+from Customer.views import CustomerViewSet
+from Orders.views import OrdersViewSet
 
 router = routers.DefaultRouter()
+router.register(r'car_types', CarTypesViewSet, 'list')
+router.register(r'cities', CityViewSet, 'list')
+router.register(r'countries', CountryViewSet, 'list')
+router.register(r'customer', CustomerViewSet)
+router.register(r'orders', OrdersViewSet)
 router.register(r'accounts', apiusr.views.UserView, 'list')
-router.register(r'car_types', CarTypes.views.CarTypesViewSet, 'list')
-router.register(r'cities', City.views.CarTypesViewSet, 'list')
-router.register(r'countries', Country.views.CarTypesViewSet, 'list')
-router.register(r'customer', Customer.views.CustomerViewSet)
-router.register(r'orders', Orders.views.CustomerViewSet)
-
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

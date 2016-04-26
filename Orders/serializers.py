@@ -9,4 +9,11 @@ class OrdersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Orders
-        fields = ('id', 'user_id', 'city_name', 'city_id', 'created_at', 'created_at')
+        fields = ('id', 'user_id', 'city_name', 'city_id', 'updated_at', 'created_at')
+
+    def create(self, validated_data):
+        element = super(OrdersSerializer, self).create(validated_data)
+        element.user = self.context['request'].user
+        element.save()
+
+        return element

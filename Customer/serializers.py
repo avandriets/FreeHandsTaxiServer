@@ -12,6 +12,14 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = ('id', 'first_name', 'last_name', 'is_driver', 'car_type',
-                  'country_name', 'country_id', 'city_name', 'city_id',
-                  'user_id', 'created_at', 'created_at'
+                  'country_name', 'country_id', 'city_name', 'city_id', 'car_registration_number',
+                  'car_model', 'length', 'width', 'height', 'volume', 'capacity'
+                                                                      'user_id', 'updated_at', 'created_at'
                   )
+
+    def create(self, validated_data):
+        element = super(CustomerSerializer, self).create(validated_data)
+        element.user = self.context['request'].user
+        element.save()
+
+        return element
