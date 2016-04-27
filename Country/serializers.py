@@ -5,4 +5,4 @@ from rest_framework import serializers
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ('id', 'name_eng', 'name_rus')
+        fields = ('id', 'name_eng', 'name_rus', 'created_at', 'updated_at')

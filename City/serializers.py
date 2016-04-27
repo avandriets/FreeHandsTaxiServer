@@ -8,4 +8,4 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ('id', 'name', 'country_name', 'country_id')
+        fields = ('id', 'name', 'country_name', 'country_id', 'created_at', 'updated_at')
