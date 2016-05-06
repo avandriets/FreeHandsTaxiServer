@@ -1,6 +1,7 @@
 from City.models import City
 from City.serializers import CitySerializer
 from rest_framework import viewsets
+from rest_framework import permissions
 
 
 class CityViewSet(viewsets.ModelViewSet):
@@ -9,3 +10,5 @@ class CityViewSet(viewsets.ModelViewSet):
     """
     queryset = City.objects.all()
     serializer_class = CitySerializer
+
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

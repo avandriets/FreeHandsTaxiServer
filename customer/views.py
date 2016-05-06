@@ -12,5 +12,5 @@ class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
 
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
-    filter_fields = ('is_driver', 'updated_at', 'city', 'first_name', 'last_name', 'car_type')
+    filter_fields = ('is_driver', 'updated_at', 'city', 'first_name', 'last_name', 'car_type', 'user')
     ordering_fields = ('created_at', 'updated_at')
