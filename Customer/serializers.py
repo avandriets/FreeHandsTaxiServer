@@ -11,7 +11,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
-        fields = ('id', 'first_name', 'last_name', 'is_driver', 'car_type', 'user',
+        fields = ('id', 'first_name', 'last_name', 'phone_number', 'is_driver', 'car_type', 'user',
                   'car_type', 'city',  'car_registration_number',
                   'car_model', 'length', 'width', 'height', 'volume', 'capacity'
                   , 'updated_at', 'created_at'
