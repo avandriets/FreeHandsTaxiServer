@@ -6,4 +6,4 @@ class DriverResponseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DriverResponse
-        fields = ('id', 'order', 'user', 'price', 'updated_at', 'created_at')
+        fields = ('id', 'order', 'user', 'price', 'status', 'updated_at', 'created_at')

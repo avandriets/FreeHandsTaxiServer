@@ -6,7 +6,7 @@ class OrdersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Orders
-        fields = ('id', 'user', 'city', 'car_type', 'order_date', 'driver',
+        fields = ('id', 'user', 'city', 'car_type', 'order_date', 'driver', 'status',
                   'from_address', 'to_address',
                   'from_latitude', 'from_longitude', 'to_latitude', 'to_longitude',
                   'description', 'price', 'updated_at', 'created_at')
