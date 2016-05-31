@@ -2,6 +2,7 @@ from DriverResponse.models import DriverResponse
 from rest_framework import serializers
 
 
+
 class DriverResponseSerializer(serializers.ModelSerializer):
 
     class Meta:

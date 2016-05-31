@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 # 1 - выбран
 
 
+
 class DriverResponse(models.Model):
     order = models.ForeignKey(Orders, null=True, verbose_name='Заказ')
     user = models.ForeignKey(User, null=True, verbose_name='Водитель')

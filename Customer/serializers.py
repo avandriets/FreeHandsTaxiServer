@@ -2,6 +2,7 @@ from Customer.models import Customer
 from rest_framework import serializers
 
 
+
 class CustomerSerializer(serializers.ModelSerializer):
     # country_name = serializers.ReadOnlyField(source='country.name', required=False)
     # country_id = serializers.ReadOnlyField(source='country.id', required=False)

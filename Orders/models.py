@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+
 # status
 # 0 - Перевозчик не выбран
 # 1 - Перевозчик выбран

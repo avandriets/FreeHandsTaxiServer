@@ -2,6 +2,7 @@ from Orders.models import Orders
 from rest_framework import serializers
 
 
+
 class OrdersSerializer(serializers.ModelSerializer):
 
     class Meta:
