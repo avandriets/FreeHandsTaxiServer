@@ -14,7 +14,7 @@ class OrdersViewSet(viewsets.ModelViewSet):
     serializer_class = OrdersSerializer
 
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
-    filter_fields = ('user', 'updated_at', 'city', 'car_type')
+    filter_fields = ('user', 'updated_at', 'city')
     ordering_fields = ('created_at', 'updated_at')
 
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

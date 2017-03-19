@@ -1,5 +1,5 @@
 # coding=utf-8
-from Customer.models import Customer
+from Customer.models import Customer, PhotoDocumentStorage, PhotoDriverLicenceStorage
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
@@ -40,9 +40,10 @@ class CustomerTypesListFilter(admin.SimpleListFilter):
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'customer_type', 'car_registration_number', 'car_model', 'car_type', 'city', 'user', 'created_at', 'updated_at')
-    list_display_links = ('first_name', 'last_name', 'car_registration_number')
-    list_filter = (CustomerTypesListFilter, 'city', 'car_type')
+    list_display = ('first_name', 'last_name', 'customer_type', 'user', 'created_at', 'updated_at')
+    list_display_links = ('first_name', 'last_name', 'user', 'created_at', 'updated_at')
+
+    # list_filter = (CustomerTypesListFilter, 'city')
 
     def customer_type(self, obj):
 
@@ -51,25 +52,44 @@ class CustomerAdmin(admin.ModelAdmin):
         else:
             return u"Пассажир"
 
-
     customer_type.short_description = 'Driver ?'
 
     fieldsets = (
         ('Customer data', {
-            'fields': ('first_name', 'last_name', 'is_driver', 'city', 'user')
+            'fields': ('first_name', 'middle_name', 'last_name', 'is_driver', 'birth_date',
+                       'phone_number', 'gender', 'document_number', 'driver_licence_number',
+                       'driver_licence_date', 'status', 'change_status_description',
+                       'user', 'dispatch'
+                       )
         }),
-        ('Car description', {
-            'fields': ('car_registration_number', 'car_model', 'car_type')
-        }),
-        ('Advanced car options', {
-            'classes': ('collapse',),
-            'fields': ('length', 'width', 'height', 'volume', 'capacity'),
-        }),
+
+        # ('Car description', {
+        #     'fields': ('car_registration_number', 'car_model', 'car_type')
+        # }),
+        # ('Advanced car options', {
+        #     'classes': ('collapse',),
+        #     'fields': ('length', 'width', 'height', 'volume', 'capacity'),
+        # }),
     )
 
-    def view_car_registration_number(self, obj):
-        return obj.car_registration_number
+    # def view_car_registration_number(self, obj):
+    #     return obj.car_registration_number
+    #
+    # view_car_registration_number.short_name = 'car_number'
 
-    view_car_registration_number.short_name = 'car_number'
 
 admin.site.register(Customer, CustomerAdmin)
+
+
+class PhotoDocumentStorageAdmin(admin.ModelAdmin):
+    list_display = ('customer', 'full_photoURL', 'photo_type', 'created_at', 'updated_at')
+    list_display_links = ('customer', 'full_photoURL', 'photo_type', 'created_at', 'updated_at')
+
+admin.site.register(PhotoDocumentStorage, PhotoDocumentStorageAdmin)
+
+
+class PhotoDriverLicenceStorageAdmin(admin.ModelAdmin):
+    list_display = ('customer', 'full_photoURL', 'photo_type', 'created_at', 'updated_at')
+    list_display_links = ('customer', 'full_photoURL', 'photo_type', 'created_at', 'updated_at')
+
+admin.site.register(PhotoDriverLicenceStorage, PhotoDriverLicenceStorageAdmin)

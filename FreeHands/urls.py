@@ -15,18 +15,23 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 import apiusr.views
+from Cars.views import CarsViewSet, CarTypesViewSet, CarsMarksViewSet, PhotoTypeViewSet, PhotoCarsStorageViewSet, CrewViewSet
 from DriverResponse.views import DriverResponseViewSet
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
-from CarTypes.views import CarTypesViewSet
 from City.views import CityViewSet
 from Country.views import CountryViewSet
 from Customer.views import CustomerViewSet
 from Orders.views import OrdersViewSet
 
 router = routers.DefaultRouter()
+router.register(r'cars', CarsViewSet, 'list')
 router.register(r'car_types', CarTypesViewSet, 'list')
+router.register(r'car_marks', CarsMarksViewSet, 'list')
+router.register(r'photo_type', PhotoTypeViewSet, 'list')
+router.register(r'car_photo', PhotoCarsStorageViewSet, 'list')
+router.register(r'crew', CrewViewSet, 'list')
 router.register(r'cities', CityViewSet, 'list')
 router.register(r'countries', CountryViewSet, 'list')
 router.register(r'customer', CustomerViewSet)
